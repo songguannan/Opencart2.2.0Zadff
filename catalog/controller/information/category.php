@@ -51,7 +51,8 @@ class ControllerInformationCategory extends Controller {
 		$this->load->model('catalog/information');
 		
 		$data['informations'] = array();
-		foreach ($this->model_catalog_information->getInformations() as $result) {
+		$parent_id = (int)$this->request->get['path'];
+		foreach ($this->model_catalog_information->getInformations($parent_id) as $result) {
 				/*//测试代码
 				foreach ($result as $key => $value) {
 					echo $key.'————>'.$value.'<br>';
