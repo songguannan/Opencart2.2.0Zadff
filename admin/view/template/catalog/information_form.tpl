@@ -51,9 +51,9 @@
                   </div>
 
                   <div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-parent<?php echo $language['language_id']; ?>"><?php echo $entry_title; ?></label>
+                    <label class="col-sm-2 control-label" for="input-parent<?php echo $language['language_id']; ?>"><?php echo $entry_parent; ?></label>
                     <div class="col-sm-10">
-                      <input type="text" name="information_description[<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($information_description[$language['language_id']]) ? $information_description[$language['language_id']]['title'] : ''; ?>" placeholder="<?php echo $entry_title; ?>" id="input-title<?php echo $language['language_id']; ?>" class="form-control" />
+                      <input type="text" name="information_description[<?php echo $language['language_id']; ?>][parent]" value="<?php echo isset($information_description[$language['language_id']]) ? $information_description[$language['language_id']]['parent_id'] : ''; ?>" placeholder="<?php echo $entry_parent; ?>" id="input-parent<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_title[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_title[$language['language_id']]; ?></div>
                       <?php } ?>
