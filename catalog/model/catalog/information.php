@@ -21,4 +21,9 @@ class ModelCatalogInformation extends Model {
 			return 0;
 		}
 	}
+	public function getTotalInformations($parent_id=0) {
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "information_description WHERE parent_id = '".(int)$parent_id."'");
+
+		return $query->row['total'];
+	}
 }
