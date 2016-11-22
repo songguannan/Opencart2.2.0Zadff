@@ -51,8 +51,21 @@ class ControllerInformationCategory extends Controller {
 		$this->load->model('catalog/information');
 		
 		$data['informations'] = array();
+		//从请求取得当前页数
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
 		$parent_id = (int)$this->request->get['path'];
-		foreach ($this->model_catalog_information->getInformations($parent_id) as $result) {
+		$start=($page - 1) * $this->config->get('config_limit_catalog');
+		$limit=$this->config->get('config_limit_catalog');
+		$filter_data = array(
+			'start' 	=> ($page - 1) * $this->config->get('config_limit_catalog'),
+			'limit' 	=> $this->config->get('config_limit_catalog'),
+			'parent_id' => $parent_id
+		);
+		foreach ($this->model_catalog_information->getInformations($parent_id,$start,$limit) as $result) {
 				/*//测试代码
 				foreach ($result as $key => $value) {
 					echo $key.'————>'.$value.'<br>';
@@ -78,21 +91,15 @@ class ControllerInformationCategory extends Controller {
 		//分页
 		//总页数
 		$information_total = $this->model_catalog_information->getTotalInformations($parent_id);
-		//从请求取得当前页数
-		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
-		} else {
-			$page = 1;
-		}
 		$pagination = new Pagination();
 		$pagination->total = $information_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_catalog');//自己添加的值
-		$pagination->url = $this->url->link('information/category', 'token=' . $this->session->data['token'] . $url . '&path=' . $parent_id . '&page={page}', true);
+		$pagination->url = $this->url->link('information/category', $url . '&path=' . $parent_id . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($information_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($information_total - $this->config->get('config_limit_admin'))) ? $information_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $information_total, ceil($information_total / $this->config->get('config_limit_admin')));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($information_total) ? (($page - 1) * $this->config->get('config_limit_catalog')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_catalog')) > ($information_total - $this->config->get('config_limit_catalog'))) ? $information_total : ((($page - 1) * $this->config->get('config_limit_catalog')) + $this->config->get('config_limit_catalog')), $information_total, ceil($information_total / $this->config->get('config_limit_catalog')));
 
 
 			$data['column_left'] = $this->load->controller('common/column_left');
