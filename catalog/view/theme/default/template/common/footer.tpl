@@ -39,7 +39,7 @@
       </div>
     </div>
     <hr>
-    <p><?php echo $powered; ?></p>
+    <!-- <p><?php echo $powered; ?></p> -->
   </div>
 </footer>
 
@@ -49,5 +49,15 @@ Please donate via PayPal to donate@opencart.com
 //-->
 
 <!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
-
+<!-- 百度统计开始 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e340e0c3e6c5d20d219eea8ffa2809a6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- 百度统计结束 -->
 </body></html>

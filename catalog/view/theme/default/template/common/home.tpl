@@ -10,5 +10,7 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?><?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
+    <p>友情链接</p>
+    <hr>
 </div>
 <?php echo $footer; ?>
