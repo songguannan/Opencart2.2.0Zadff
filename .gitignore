@@ -6,6 +6,8 @@ admin/config.php
 
 download/
 image/data/
+image/catalog/demo/
+image/flags/
 image/cache/
 system/cache/
 system/logs/
@@ -13,5 +15,3 @@ system/logs/
 system/storage/
 
 sgndff/
-image/
-system/
