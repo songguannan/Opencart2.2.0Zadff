@@ -6,8 +6,6 @@ admin/config.php
 
 download/
 image/data/
-image/catalog/demo/
-image/flags/
 image/cache/
 system/cache/
 system/logs/
